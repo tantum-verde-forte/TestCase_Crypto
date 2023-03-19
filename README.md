@@ -4,16 +4,27 @@
 Был разработано приложение для просмотра информации о криптовалютах.
 
 Возможности:
+
 -Регистрация и авторизация
+
 -Добавление криптовалют в избранное и удаление из избранного(для авторизированных пользователей).
+
 -Поиск определенной криптовалюты по символьному названию.
 
+
 Разработанно api:
-api/auth
-api/add/cryptocurrency
-api/view/сryptocurrencies
-api/view/сryptocurrencies/<str:symbol>
-api/update/cryptocurrency
+
+api/auth - получение токена для авторизации (POST)  {'username': 'aaa', 'password': 'bbb'}
+
+api/add/cryptocurrency - добавление криптовалюты в базу (POST)  {'symbol': 'ETH'}
+
+api/view/сryptocurrencies - получение списка всех криптовалют с информацией (GET)
+
+api/view/сryptocurrencies/<str:symbol> - получение определенной криптовалюты с информацией (GET)
+
+api/update/cryptocurrency - обновление информации о криптовалюте (POST)  {'symbol': 'ETH'}   (DELETE)  {'symbol': 'ETH'}
+
 
 Протестировать приложение:
+
 https://web-production-219d2.up.railway.app/
