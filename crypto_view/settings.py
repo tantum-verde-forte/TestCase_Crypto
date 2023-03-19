@@ -146,3 +146,4 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = ['web-production-219d2.up.railway.app']
