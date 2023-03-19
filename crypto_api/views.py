@@ -193,8 +193,6 @@ def index(request):
 
 def search(request):
 
-    if request.user.id is None:
-        return redirect('login')
     search_text = request.GET.get('s').upper()
     cryptocurrency_list = Cryptocurrency.objects.filter(symbol=search_text)
     template = 'index.html'
