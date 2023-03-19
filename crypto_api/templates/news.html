@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 style="text-align: center"> Cryptocurrencies news </h1>
+    <p style="text-align: center"><a href="/">All cryptocurrencies</a>   {% if user.is_authenticated %}   <a href="/favourites">Favourites</a>     <a href="/logout">Logout</a>  {% else %} <a href="/login">Login</a> {% endif %}</p>
+    {% for article in articles %}
+    <h2><a href="{{ article.2 }}">{{ article.0 }}</a></h2>
+    <p>{{ article.3 }}</p>
+    <p>{{ article.1 }}</p>
+    <br>
+    <br>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 style="text-align: center"> Cryptocurrencies </h1>
+   <p style="text-align: center"><a href="/news">News</a> {% if user.is_authenticated %} <a href="/favourites">Favourites</a>  <a href="/logout">Logout</a>  {% else %} <a href="/login">Login</a> {% endif %}</p>
+    <form action="search" method="get" align="center">
+        <input name="s" placeholder="Search by symbol" type="search">
+        <button type="submit">Search</button>
+    </form>
+    <table style="width: 50%; text-align: center" align="center">
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Market volume</th>
+            <th>Change</th>
+            {% if user.is_authenticated %}
+            <th>Favourites</th>
+            {% endif %}
+        </tr>
+        {% for i in cryptocurrency_list %}
+        <tr>
+            <td>{{ i.symbol }}</td>
+            <td>{{ i.name }}</td>
+            <td>{{ i.price }} $</td>
+            <td>{{ i.market_volume }} $</td>
+            <td>{{ i.change }} $</td>
+            {% if user.is_authenticated %}
+            <td>
+                <form action="add/favourites" method="get" align="center">
+                    <input type="hidden" name="symbol" value="{{ i.symbol }}">
+                    <button type="submit">Add</button>
+                </form>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
