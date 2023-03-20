@@ -252,9 +252,10 @@ def delete_from_favourites(request):
 
 
 def news(request):
-
+    
+    news_date = date.today() - timedelta(days=28)
     articles = []
-    url_news = f'https://newsapi.org/v2/everything?q=cryptocurrency&from={date.today() - timedelta(days=28)}&sortBy=publishedAt&apiKey=1cd0718fc85049a29dafce6e2d07d792'
+    url_news = f'https://newsapi.org/v2/everything?q=cryptocurrency&from={news_date}&sortBy=publishedAt&apiKey=1cd0718fc85049a29dafce6e2d07d792'
     response = requests.get(url_news)
     data = response.json()
     for i in data['articles']:
