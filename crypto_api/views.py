@@ -10,6 +10,7 @@ from rest_framework import permissions
 
 import requests
 import status
+from datetime import date, timedelta
 
 from .models import Cryptocurrency
 from .serializers import CryptocurrencySerializer
@@ -253,7 +254,7 @@ def delete_from_favourites(request):
 def news(request):
 
     articles = []
-    url_news = 'https://newsapi.org/v2/everything?q=cryptocurrency&from=2023-02-18&sortBy=publishedAt&apiKey=1cd0718fc85049a29dafce6e2d07d792'
+    url_news = f'https://newsapi.org/v2/everything?q=cryptocurrency&from={date.today() - timedelta(days=28)}&sortBy=publishedAt&apiKey=1cd0718fc85049a29dafce6e2d07d792'
     response = requests.get(url_news)
     data = response.json()
     for i in data['articles']:
@@ -261,6 +262,6 @@ def news(request):
         articles.append(article)
     print(articles[1][1])
     template = 'news.html'
-
+    
     return render(request, template, context={"articles": articles})
 
